@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 
-class Registration extends Component {
+class Home extends Component {
   render() {
     return (
       <div className="App">
         <div className="container">
         	<div className="row">
         		<div className="col-6">
-        		Registration Form
+        		Home 
         		</div>
         	</div>	
         </div>
@@ -17,4 +17,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default Home;

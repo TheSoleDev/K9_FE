@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import List from './List';
+
+import Routes from './routes/Routes';
+
 import Header from './components/Header';
 
 import ComicsData from './ComicsData';
@@ -40,16 +43,8 @@ class App extends Component {
   render() {
    // console.log(this.state.items.data.results);
     return (
+      <Routes />
 
-      <div>
-          <Header />
-        <div className="container">
-          <div className="store-container">
-            <h1>All Comics</h1>
-            <List result={ComicsData().data.results} onSelect={this.handleSelection} />
-          </div>
-        </div>
-      </div>
     );
   }
 
