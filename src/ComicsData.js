@@ -1,4 +1,4 @@
-export const ComicData = {
+export default () => ({
   "code": 200,
   "status": "Ok",
   "copyright": "© 2019 MARVEL",
@@ -3040,4 +3040,4 @@ export const ComicData = {
       }
     ]
   }
-};
+});
