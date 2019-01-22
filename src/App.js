@@ -43,7 +43,12 @@ class App extends Component {
   render() {
    // console.log(this.state.items.data.results);
     return (
-      <Routes />
+      <div>
+        <Header />
+        <div className="container">
+          <Routes />
+        </div>
+      </div>
 
     );
   }
