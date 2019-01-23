@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 
 
 class Header extends Component {
+
+  constructor(props){
+    let userData = null;
+
+    if(JSON.parse(sessionStorage.getItem('userData'))){
+      userData = JSON.parse(sessionStorage.getItem('userData'));
+    }   
+       
+    super(props);
+    this.state = {
+        userData: userData
+    }
+
+
+  }
+
+
   render() {
     return (
 
@@ -14,7 +31,8 @@ class Header extends Component {
 
 				<ul className="navbar-nav">
 	                <li className="nav-item">
-	                    <a className="nav-link" href="/login">Login</a>
+	                    <a className="nav-link" href="/login" htmlstyle="{this.state.userData === null? hidden : ''}">Login</a>
+	                    
 	                </li>
 	                <li className="nav-item">
 	                    <a className="nav-link" href="/register">Register</a>
