@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import List from './List';
 
 import Routes from './routes/Routes';
 
-import Header from './components/Header';
 
-import ComicsData from './ComicsData';
+
 
 class App extends Component {
   
   constructor(props) {
     super(props);
+
     this.state = {
-      selected: []
+          userData: null,
+          isLoggedIn: false
     
     };
-    this.handleSelection = this.handleSelection.bind(this);
+
   }
+
+
 
 
   // constructor(props){
@@ -41,13 +44,13 @@ class App extends Component {
 
 
   render() {
-   // console.log(this.state.items.data.results);
+     // console.log(this.state.items.data.results);
     return (
       <div>
-        <Header />
-        <div className="container">
+ 
+
           <Routes />
-        </div>
+
       </div>
 
     );

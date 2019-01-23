@@ -1,3 +1,22 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #ff0000;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+nav{
+  margin-bottom: 30px;
+}
+.login_form_container{
+  margin-top: 80px;
+}
+
 .store-container {
   float: left;
   margin: 10px;
@@ -14,10 +33,6 @@
   border-radius: 10px;
   background-color: whitesmoke;
   border: 1px solid #333;
-}
-
-h1 {
-  margin: 20px;
 }
 
 .comic {

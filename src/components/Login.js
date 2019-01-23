@@ -57,21 +57,27 @@ class Login extends Component {
     if(this.state.userData !== null){
       return (<Redirect to={'/herolist'}/>);
     }
-console.log(this.state.userData);
+
     return (
 
       <div className="row justify-content-center">
         <div className="col-4 align-self-center">
 
+        	<div className="login_form_container">
+	 		
+	          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+	          <div className="form-group">
+		          <label className="sr-only">Username</label>
+		          <input type="text" id="username" name="username" className="form-control" placeholder="Username" required onChange={this.onChange}/>
+	          </div>
+	          <div className="form-group">
+		          <label  className="sr-only">Password</label>
+		          <input type="password" id="password" name="password" className="form-control" placeholder="Password" required onChange={this.onChange}/>
+	          </div>
+	          <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={this.login}>Sign in</button>
 
-          <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-          <label className="sr-only">Username</label>
-          <input type="text" id="username" name="username" className="form-control" placeholder="Username" required onChange={this.onChange}/>
-          <label  className="sr-only">Password</label>
-          <input type="password" id="password" name="password" className="form-control" placeholder="Password" required onChange={this.onChange}/>
+	     	</div>
 
-          <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={this.login}>Sign in</button>
-       
         </div>
       </div>
     );

@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from '../components/Home';
 import Register from '../components/Register';
-import Login from '../components/Login';
 import HeroList from '../components/HeroList';
+import ListItem from '../ListItem';
 
 
 export default () => (
@@ -13,8 +13,9 @@ export default () => (
 		<Switch>
 			<Route path="/" exact component={ Home } />
 			<Route path="/register" exact component={ Register } />
-			<Route path="/login" exact component={ Login } />				
+			<Route path="/login"  exact component={ Home } />				
 			<Route path="/herolist" exact component={ HeroList } />				
+			<Route path="/listitem" exact component={ ListItem } />					
 
 		</Switch>
 	</BrowserRouter>
