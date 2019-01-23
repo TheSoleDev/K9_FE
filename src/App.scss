@@ -17,6 +17,25 @@ nav{
   margin-top: 80px;
 }
 
+
+.center{
+  img{
+    margin:0 auto;
+  }
+  text-align: center;
+}
+
+.comic-item{
+  min-height: 52px;
+  padding-bottom: 30px;
+   margin-bottom: 30px;
+}
+.tag {
+    position: absolute;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px;
+}
 .store-container {
   float: left;
   margin: 10px;

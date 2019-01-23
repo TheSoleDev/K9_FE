@@ -29,7 +29,6 @@ class Header extends Component {
 	}
 
 	checkIfLoggedIn(props){
-		console.log('bbbbbbb', this.state.userData);
         if(this.state.userData !== null && typeof this.state.userData !== "undefined"){
 			return(
 					<ul className="navbar-nav">

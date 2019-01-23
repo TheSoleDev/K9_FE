@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './Header';
 import List from '../List';
 import {PostData} from '../services/PostData';
-import ComicsData from '../ComicsData';
+import HeroComicSeries from './HeroComicSeries';
 
 class HeroList extends Component {
   constructor(props){
       super(props);
       this.state = {
-          selected: [],
           userData: null,
-          isLoggedIn: false
+          isLoggedIn: false,
+          isLoaded: false,
+          characterItems:[],
+          selectedChar:null
       }
-      this.logout = this.logout.bind(this);
-      this.handleSelection = this.handleSelection.bind(this);
+
   }
 
   componentWillMount(props){
@@ -26,39 +26,78 @@ class HeroList extends Component {
         });
       }
   }
-  logout(){
-    sessionStorage.setItem('userData','');
-    sessionStorage.clear();
+  componentDidMount(){
+    fetch("http://127.0.0.1:8000/users/getcharacters",{
+        method: 'POST',
+          headers: new Headers({
+            "Content-Type": "application/json"
+          })
+      })
+     .then(res => res.json())
+    .then(json => {
+        this.setState({
+            isLoaded: true,
+            characterItems: json,
+        })
+    })
+          .catch((error) => {
+        console.log(error);
+      })
+
   }
 
-  handleSelection(index) {
-    this.setState({
-      selected: this.state.selected.concat(index)
-    });
+  selectCharacter(charId){
+        this.setState({
+            selectedChar: charId,
+        })
   }
-  
+
   render() {
-    return (
-        
-      <div>
-        <Header  />      
-        <div className="container">
-        	<div className="row">
-        		<div className="col">
-
-                <p>{this.state.selected.length}</p>
-                <div className="store-container">
-                    <h1>All Comics</h1>
-                    <List result={ComicsData().data.results} onSelect={this.handleSelection} />
-                </div>
 
 
+    const metaData = this.state;
+    const { isLoaded, characterItems } = metaData;
 
-        		</div>
-        	</div>	
+    if(this.state.selectedChar != null){
+      return (
+        <HeroComicSeries currentCharId={this.state.selectedChar} />
+      )
+    }
+
+    if(!isLoaded){
+        return <div>Loading..</div>
+    }
+    else{
+      return (
+       
+        <div>
+          <Header  />      
+          <div className="container">
+          	<div className="row">
+          		
+                  <div className="col">
+                    <h1>Select Charcater</h1>
+                  </div>
+              </div>
+              <div className="row">    
+                    {characterItems.characters.map(item => (
+                      <div className="col center" key={item.id}>
+                       
+                          <img className="img-thumbnail" src={`${item.char_thumbnail}`} />
+
+                          <p><strong>{item.char_name}</strong></p>
+                        <button className="btn btn-primary" onClick={() => this.selectCharacter(item.char_id)}>View Comic Series</button>
+                      </div>
+                    ))}
+      
+
+
+          	
+          	</div>	
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
